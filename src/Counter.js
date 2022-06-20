@@ -8,6 +8,7 @@ export function Counter() {
   const [dislikes, Setdislikes] = useState(0);
 
 
+
   return (
     <div>
       <Badge badgeContent={like} color="success" onClick={() => { Setlike(like + 1); }}>

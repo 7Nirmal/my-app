@@ -20,6 +20,8 @@ import IconButton from '@mui/material/IconButton';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { TicTacToe } from './tictactoe';
+import { BasicForm } from './BasicForm';
+import { EditMovie } from './EditMovie';
 
  function App() {
    
@@ -92,7 +94,8 @@ import { TicTacToe } from './tictactoe';
     }
     ]
 
-    const[movieList,setMovieList]= useState(movie);
+    const[movieList,setMovieList]= useState([]);
+
     const navigate = useNavigate();
     const[mode,setMode] = useState("dark");
     const theme = createTheme({
@@ -116,7 +119,7 @@ import { TicTacToe } from './tictactoe';
           <Button color="inherit" onClick={()=>{navigate("/movie/add")}}>Add Movie</Button>
           <Button color="inherit" onClick={()=>{setMode(mode === "dark"?"light":"dark")}}>
             <IconButton aria-label="delete">
-            {mode==="dark" ? <LightModeIcon/>:<DarkModeIcon/>}
+            {mode==="dark" ? <LightModeIcon/>:<DarkModeIcon/>} 
 </IconButton>
             {mode==="dark"?"light mode":"dark mode"}</Button>
           
@@ -126,17 +129,20 @@ import { TicTacToe } from './tictactoe';
       <section className="router-container">
       <Routes>
        <Route path="/home" element={<><h1>WELCOME TO MOVIE APP!!</h1></>}/>
-       <Route path="/movies/:id" element={<Trailer movieList={movieList}/>}/>
+       <Route path="/movies/:id" element={<Trailer movielist={movieList}/>}/>
        <Route path="/color-game" element={<><Addcolor/>   <BarColor/></>}/>
        <Route path="/tic-tac-toe" element={<TicTacToe/>}/>
        <Route path="/movie-list" element={
      
-     <MovieList  movieDetails={movieList} setMovieList={setMovieList}/>
+     <MovieList />
      }/>
      <Route path="/404" element={<NotFound/>}/>
      <Route path="*" element  ={<Navigate replace to = "/404"/>}/>
      <Route path="/films" element={<Navigate replace to ="/movie-list" />}/>
-     <Route path="/movie/add" element={<Moviebar movieDetails={movie} setMovieList={setMovieList}/>}/>
+     <Route path="/movie/add" element={<Moviebar />}/>
+     <Route path="/movies/edit/:id" element= {<EditMovie/>}/>
+     <Route path="/Basic-Form" element={<BasicForm />}/>
+
      </Routes>
       </section>
     </div>
@@ -147,3 +153,5 @@ import { TicTacToe } from './tictactoe';
 }
 
 export default App;
+
+

@@ -50,9 +50,10 @@ export function MovieCard({ movies, id,remove}) {
           </CardContent>
           <CardActions>
             <Counter />
-            <IconButton aria-label="delete" onClick= {()=>{remove(movies,id)}}>
+            <IconButton aria-label="delete" onClick= {()=>{remove(movies.id)}}>
         <DeleteIcon  />
       </IconButton>
+      <button onClick={()=>navigate(`/movies/edit/${id}`)}>Edit</button>
           </CardActions>
     </Card>
   );
