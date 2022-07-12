@@ -128,6 +128,8 @@ import { EditMovie } from './EditMovie';
     </Box>
       <section className="router-container">
       <Routes>
+          
+       <Route path="/" element={<><h1>WELCOME TO MOVIE APP!!</h1></>}/>
        <Route path="/home" element={<><h1>WELCOME TO MOVIE APP!!</h1></>}/>
        <Route path="/movies/:id" element={<Trailer movielist={movieList}/>}/>
        <Route path="/color-game" element={<><Addcolor/>   <BarColor/></>}/>
