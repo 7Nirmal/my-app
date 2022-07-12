@@ -1,16 +1,17 @@
 
 import {MovieCard} from './MovieCard';
 import{useState,useEffect} from 'react';
+import {API} from './Global.js';
 export function MovieList(){
     const[movieList,setMovieList]= useState([]);
-const getMovie  = () => {fetch("https://628f1cf00e69410599d56201.mockapi.io/movies")
+const getMovie  = () => {fetch(`${API}/movies`)
 .then((data)=> data.json())
 .then(result=> setMovieList(result));}
 useEffect(() =>{getMovie()},[])
 
 
     const removeMovie = (id) =>{
-        fetch(`https://628f1cf00e69410599d56201.mockapi.io/movies/${id}`, {method:"DELETE",})
+        fetch(`${API}/movies/${id}`, {method:"DELETE",})
         .then((data) => data.json()).then(()=>{getMovie()})
     }
 

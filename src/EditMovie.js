@@ -4,13 +4,14 @@ import {useState,useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import {API} from './Global.js';
 
 
 export function EditMovie() {
   const { id } = useParams();
   // const film = movielist[id];
   const[film,setFilm] =useState(null);
-  const getFilm  = () => {fetch(`https://628f1cf00e69410599d56201.mockapi.io/movies/${id}`)
+  const getFilm  = () => {fetch(`${API}/movies/${id}`)
 .then((data)=> data.json())
 .then(result=> setFilm(result));}
 useEffect(() =>getFilm(), [])
@@ -27,7 +28,7 @@ function EditMovieForm({film}) {
 
     const EditedMovie = () =>{
     const newMovie = {name:name,poster:poster,rating:rating,summary:summary,trailer:trailer};
-    fetch(`https://628f1cf00e69410599d56201.mockapi.io/movies/${film.id}`,
+    fetch(`${API}/movies/${film.id}`,
     {method:"PUT",body:JSON.stringify(newMovie),
     headers:{"Content-Type": "application/json"},}).then(data => data.json()).then(()=>navigate("/movie-list"))}
     // setMovieList([...movieList,newMovie]); 

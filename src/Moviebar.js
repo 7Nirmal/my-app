@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
+import {API} from './Global.js';
 
 const formValidationSchema = yup.object({
     name: yup.string().required(),
@@ -23,7 +24,7 @@ export function Moviebar(){
     const navigate = useNavigate();
 
     const addMovie = (newMovie) =>{
-    fetch(`https://628f1cf00e69410599d56201.mockapi.io/movies`,
+    fetch(`${API}/movies`,
     {method:"POST",body:JSON.stringify(newMovie),
     headers:{"Content-Type": "application/json"},}).then(data => data.json()).then(()=>navigate("/movie-list"))
     // setMovieList([...movieList,newMovie]); 
